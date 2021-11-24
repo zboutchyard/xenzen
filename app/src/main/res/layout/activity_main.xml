@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/background_login_foreground"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+
+            android:layout_marginLeft="50dp"
+            android:contentDescription="@string/app_logo"
+            android:textAlignment="center"
+            app:srcCompat="@drawable/logo" />
+
+        <TextView
+            android:id="@+id/textView"
+            style="@style/textView_style"
+            android:fontFamily="@font/rock_salt"
+            android:text="@string/foreign_name"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/editTextUsername"
+            style="@style/editText_style"
+
+            android:hint="@string/user_hint"
+            android:inputType="textEmailAddress"
+            android:textColor="@color/black"
+            android:textColorHint="@color/colorPrimaryDark"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <EditText
+            android:id="@+id/editTextPassword"
+            style="@style/editText_style"
+            android:hint="@string/pass_hint"
+            android:inputType="textPassword"
+            android:textColor="@color/black"
+            android:textColorHint="@color/colorPrimaryDark"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <Button
+
+            android:id="@+id/registerButton"
+            style="@style/button_style"
+            android:background="@drawable/buttonstyle"
+            android:text="@string/login" />
+
+        <TextView
+            android:id="@+id/textView4"
+            style="@style/textView_style"
+            android:layout_marginBottom="10dp"
+            android:text="@string/first_time"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/textView5"
+            style="@style/textView_style"
+            android:clickable="true"
+            android:focusable="true"
+            android:text="@string/register"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            tools:ignore="TouchTargetSizeCheck" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/background_login_foreground"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context=".register">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+
+            android:layout_marginLeft="80dp"
+            android:contentDescription="@string/app_logo"
+            android:textAlignment="center"
+            app:srcCompat="@drawable/logo" />
+
+        <EditText
+            android:id="@+id/editTextEmailAddress"
+            style="@style/editText_style"
+            android:hint="@string/emailHint"
+            android:inputType="textEmailAddress"
+            android:textColor="@color/black"
+            android:textColorHint="@color/colorPrimaryDark" />
+
+        <EditText
+            android:id="@+id/editTextPhone"
+            style="@style/editText_style"
+            android:layout_marginTop="20dp"
+            android:ems="10"
+            android:hint="@string/phoneHint"
+            android:inputType="phone"
+            android:textColor="@color/black"
+            android:textColorHint="@color/colorPrimaryDark" />
+
+        <EditText
+            android:id="@+id/editTextUsername"
+            style="@style/editText_style"
+            android:layout_marginTop="20dp"
+            android:hint="@string/user_hint"
+            android:inputType="text"
+            android:textColor="@color/black"
+            android:textColorHint="@color/colorPrimaryDark"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <EditText
+            android:id="@+id/editTextPassword"
+            style="@style/editText_style"
+            android:layout_marginTop="20dp"
+            android:hint="@string/pass_hint"
+            android:inputType="textPassword"
+            android:textColor="@color/black"
+            android:textColorHint="@color/colorPrimaryDark"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <EditText
+            android:id="@+id/editTextConfirmPassword"
+            style="@style/editText_style"
+            android:layout_marginTop="20dp"
+            android:ems="10"
+            android:hint="@string/rePassword"
+            android:inputType="textPassword"
+            android:textColor="@color/black"
+            android:textColorHint="@color/colorPrimaryDark" />
+
+        <Button
+
+            android:id="@+id/registerButton"
+            style="@style/button_style"
+            android:background="@drawable/buttonstyle"
+            android:text="@string/createAccount" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
