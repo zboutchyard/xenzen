@@ -1,26 +1,38 @@
 package net.androidbootcamp.xenzen;
 
+import static android.content.ContentValues.TAG;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class register extends AppCompatActivity {
 
     net.androidbootcamp.xenzen.databinding.ActivityRegisterBinding binding;
-    FirebaseAuth auth;
+    FirebaseAuth fAuth;
     ProgressDialog dialog;
+    FirebaseFirestore fStore;
+    String userID;
 
 
     @Override
@@ -36,6 +48,9 @@ public class register extends AppCompatActivity {
         EditText eMail = findViewById(R.id.editTextEmailAddress);
         EditText phoneNumber = findViewById(R.id.editTextPhone);
         Button registerButton = findViewById(R.id.registerButton);
+
+        fStore = FirebaseFirestore.getInstance();
+        fAuth = FirebaseAuth.getInstance();
 
         registerButton.setOnClickListener((new View.OnClickListener() {
             @Override
@@ -70,7 +85,7 @@ public class register extends AppCompatActivity {
 
 
 
-        auth = FirebaseAuth.getInstance();
+        fAuth = FirebaseAuth.getInstance();
         dialog = new ProgressDialog(register.this);
 
         binding.registerButton.setOnClickListener(new View.OnClickListener() {
@@ -100,7 +115,7 @@ public class register extends AppCompatActivity {
 
         dialog.setMessage("Please Wait...");
 
-        auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        fAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
 
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -109,7 +124,26 @@ public class register extends AppCompatActivity {
 
                     dialog.setMessage("Account Successfully Created");
                     Toast.makeText(register.this, "Account Successfully Created", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(register.this, MainActivity.class));
+                    userID = fAuth.getCurrentUser().getUid();
+                    DocumentReference documentReference = fStore.collection("users").document(userID);
+                    Map<String,Object> user = new HashMap<>();
+                    user.put("email", email);
+                    user.put("phoneNumber", phoneNumber);
+                    user.put("userName", userName);
+                    documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void unused) {
+                            Log.d(TAG, "onSuccess: user Profile is created for "+ userID);
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Log.d(TAG, "onFailure: " + e.toString());
+                        }
+                    });
+
+
+                    startActivity(new Intent(getApplicationContext(), MainMenu.class));
 
 
                 }
@@ -118,5 +152,8 @@ public class register extends AppCompatActivity {
 
             }
         });
+
+
     }
+
 }

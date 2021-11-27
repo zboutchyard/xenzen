@@ -2,14 +2,11 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient_background"
-    android:id="@+id/main_container"
-    tools:context=".Journal">
-
-
-
+    tools:context=".Settings">
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -18,8 +15,8 @@
         android:layout_height="wrap_content"
         android:background="@null"
         android:src="@drawable/add_fab"
-        app:layout_anchor="@id/bottomAppBar" />
-
+        app:layout_anchor="@id/bottomAppBar"
+        tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
 
     <com.google.android.material.bottomappbar.BottomAppBar
@@ -42,14 +39,6 @@
             app:menu="@menu/bottom_nav_menu" />
 
     </com.google.android.material.bottomappbar.BottomAppBar>
-
-
-
-
-
-
-
-
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

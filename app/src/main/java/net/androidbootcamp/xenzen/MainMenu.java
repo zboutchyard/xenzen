@@ -8,6 +8,7 @@ import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -18,6 +19,7 @@ import android.widget.FrameLayout;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class MainMenu extends AppCompatActivity {
 
@@ -33,6 +35,7 @@ public class MainMenu extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
     CoordinatorLayout main_container;
     Fragment active;
+    FirebaseFirestore fStore;
 
 
 
@@ -60,6 +63,10 @@ public class MainMenu extends AppCompatActivity {
                     case R.id.miJournal:
                         Intent b = new Intent(MainMenu.this, Journal.class);
                         startActivity(b);
+                        break;
+                    case R.id.miSettings:
+                        Intent d = new Intent(MainMenu.this, Settings.class);
+                        startActivity(d);
                         break;
 
                 }
