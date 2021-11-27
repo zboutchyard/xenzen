@@ -14,6 +14,10 @@ public class Entries extends AppCompatActivity {
     TextView bodyEntry;
 
     DatabaseReference reference;
+
+    public Entries(String title, String body) {
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

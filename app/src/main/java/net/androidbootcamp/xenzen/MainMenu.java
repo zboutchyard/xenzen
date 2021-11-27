@@ -23,7 +23,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 public class MainMenu extends AppCompatActivity {
 
-    FloatingActionButton play;
+
     Button happyPlay;
     Button sadPlay;
     Button angryPlay;
@@ -36,6 +36,7 @@ public class MainMenu extends AppCompatActivity {
     CoordinatorLayout main_container;
     Fragment active;
     FirebaseFirestore fStore;
+    FloatingActionButton add;
 
 
 
@@ -47,6 +48,16 @@ public class MainMenu extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
+
+        add = findViewById(R.id.fab);
+
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainMenu.this, addEntry.class);
+                startActivity(intent);
+            }
+        });
 
 
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
@@ -68,6 +79,10 @@ public class MainMenu extends AppCompatActivity {
                         Intent d = new Intent(MainMenu.this, Settings.class);
                         startActivity(d);
                         break;
+                    case R.id.fab:
+                        Intent e = new Intent(MainMenu.this, addEntry.class);
+                        startActivity(e);
+                        break;
 
                 }
                 return false;
@@ -77,8 +92,7 @@ public class MainMenu extends AppCompatActivity {
 
 
 
-
-        bottomNavigationView.setBackground(null);
+                bottomNavigationView.setBackground(null);
 
 
 

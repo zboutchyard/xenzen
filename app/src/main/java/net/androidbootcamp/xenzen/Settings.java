@@ -6,8 +6,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -17,6 +20,7 @@ public class Settings extends AppCompatActivity {
     private BottomNavigationView.OnNavigationItemSelectedListener myNavigationItemListener;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
+    FloatingActionButton add;
 
 
     @Override
@@ -31,6 +35,17 @@ public class Settings extends AppCompatActivity {
         bottomNavigationView.setSelectedItemId(R.id.miSettings);
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
+
+        add = findViewById(R.id.fab);
+
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Settings.this, addEntry.class);
+                startActivity(intent);
+            }
+        });
+
 
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -52,6 +67,10 @@ public class Settings extends AppCompatActivity {
                     case R.id.miSettings:
                         Intent d = new Intent(Settings.this, Settings.class);
                         startActivity(d);
+                        break;
+                    case R.id.fab:
+                        Intent e = new Intent(Settings.this, addEntry.class);
+                        startActivity(e);
                         break;
 
                 }
