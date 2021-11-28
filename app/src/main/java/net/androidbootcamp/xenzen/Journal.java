@@ -9,6 +9,7 @@ import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -82,13 +83,6 @@ public class Journal extends AppCompatActivity implements FirestoreAdapter.OnLis
                 return false;
             }
         });
-        add.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), AddEntry.class);
-                startActivity(intent);
-            }
-        });
 
         //Query
         Query query = fStore.collection("entries");
@@ -101,12 +95,27 @@ public class Journal extends AppCompatActivity implements FirestoreAdapter.OnLis
                 .setQuery(query, JournalModel.class)
                 .build();
 
+        RecyclerView recyclerView = findViewById(R.id.titleList);
+
         adapter = new FirestoreAdapter(options, this);
 
 
         titles.setHasFixedSize(true);
         titles.setLayoutManager(new LinearLayoutManager(this));
         titles.setAdapter(adapter);
+
+        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,
+                ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+            @Override
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+                adapter.deleteItem(viewHolder.getAdapterPosition());
+            }
+        }).attachToRecyclerView(recyclerView);
 
     }
 

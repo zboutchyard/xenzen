@@ -35,14 +35,18 @@ public class AddEntry extends AppCompatActivity {
         save = findViewById(R.id.fabSave);
         db = FirebaseFirestore.getInstance();
 
+
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
 
                 CollectionReference dbEntries = db.collection("entries");
                 String title = txtTitle.getText().toString();
                 String body = txtBody.getText().toString();
                 JournalModel journalModel = new JournalModel(title, body);
+                FirebaseDatabase.getInstance().getReference("entries")
+                        .setValue(journalModel);
                 dbEntries.add(journalModel);
 
 

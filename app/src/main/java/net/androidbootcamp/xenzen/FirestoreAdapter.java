@@ -38,6 +38,10 @@ public class FirestoreAdapter extends FirestoreRecyclerAdapter <JournalModel, Fi
         return new JournalViewHolder(view);
     }
 
+    public void deleteItem(int position){
+        getSnapshots().getSnapshot(position).getReference().delete();
+    }
+
     public class JournalViewHolder extends  RecyclerView.ViewHolder implements View.OnClickListener{
 
         private TextView list_title;
