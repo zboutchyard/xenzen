@@ -81,7 +81,7 @@
 
         <Button
 
-            android:id="@+id/registerButton"
+            android:id="@+id/registerBtn"
             style="@style/button_style"
             android:background="@drawable/buttonstyle"
             android:text="@string/createAccount" />

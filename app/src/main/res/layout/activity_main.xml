@@ -41,7 +41,7 @@
             android:id="@+id/editTextUsername"
             style="@style/editText_style"
 
-            android:hint="@string/user_hint"
+            android:hint="@string/emailHint"
             android:inputType="textEmailAddress"
             android:textColor="@color/black"
             android:textColorHint="@color/colorPrimaryDark"
@@ -58,7 +58,7 @@
 
         <Button
 
-            android:id="@+id/registerButton"
+            android:id="@+id/registerBtn"
             style="@style/button_style"
             android:background="@drawable/buttonstyle"
             android:text="@string/login" />

@@ -7,7 +7,7 @@ public class JournalModel {
 
     private JournalModel(){}
 
-    private JournalModel(String title, String body){
+    public JournalModel(String title, String body){
         this.title = title;
         this.body = body;
     }
@@ -15,6 +15,7 @@ public class JournalModel {
     public String getTitle(){
         return title;
     }
+
     public void setTitle(String title){
         this.title = title;
     }

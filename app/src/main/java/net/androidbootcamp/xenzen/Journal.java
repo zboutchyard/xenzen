@@ -73,10 +73,20 @@ public class Journal extends AppCompatActivity implements FirestoreAdapter.OnLis
                         Intent d = new Intent(Journal.this, Settings.class);
                         startActivity(d);
                         break;
-
+                    case R.id.fab:
+                        Intent e = new Intent(getApplicationContext(), AddEntry.class);
+                        startActivity(e);
+                        break;
 
                 }
                 return false;
+            }
+        });
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), AddEntry.class);
+                startActivity(intent);
             }
         });
 

@@ -6,9 +6,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 
@@ -18,7 +23,10 @@ import com.google.firebase.firestore.FirebaseFirestore;
         private BottomNavigationView.OnNavigationItemSelectedListener myNavigationItemListener;
         FirebaseAuth fAuth;
         FirebaseFirestore fStore;
-
+        FloatingActionButton add;
+        private FirebaseUser user;
+        private DatabaseReference reference;
+        private String userID;
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +40,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
             bottomNavigationView.setSelectedItemId(R.id.miProfile);
             fAuth = FirebaseAuth.getInstance();
             fStore = FirebaseFirestore.getInstance();
+            add = findViewById(R.id.fab);
 
 
             bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -54,9 +63,25 @@ import com.google.firebase.firestore.FirebaseFirestore;
                             Intent d = new Intent(Profile.this, Settings.class);
                             startActivity(d);
                             break;
+                        case R.id.fab:
+                            Intent e = new Intent(getApplicationContext(), AddEntry.class);
+                            startActivity(e);
+                            break;
 
                     }
                     return false;
+                }
+            });
+
+            user = FirebaseAuth.getInstance().getCurrentUser();
+            reference = FirebaseDatabase.getInstance().getReference("Users");
+
+
+            add.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(getApplicationContext(), AddEntry.class);
+                    startActivity(intent);
                 }
             });
         }
