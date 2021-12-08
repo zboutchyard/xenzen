@@ -84,6 +84,14 @@ public class Journal extends AppCompatActivity implements FirestoreAdapter.OnLis
             }
         });
 
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), AddEntry.class);
+                startActivity(intent);
+            }
+        });
+
         //Query
         Query query = fStore.collection("entries");
 

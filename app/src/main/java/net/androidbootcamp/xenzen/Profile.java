@@ -113,12 +113,13 @@ import com.google.firebase.firestore.FirebaseFirestore;
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     User userProfile = snapshot.getValue(User.class);
                     if(userProfile != null){
+                        String phone = userProfile.phone;
                         String userName = userProfile.username;
                         String email = userProfile.email;
-                        String phone = userProfile.phone;
+                        phoneText.setText(phone);
                         userNameText.setText(userName);
                         emailText.setText(email);
-                        phoneText.setText(phone);
+
                     }
                 }
 

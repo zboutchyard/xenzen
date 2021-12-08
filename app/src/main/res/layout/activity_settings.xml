@@ -40,5 +40,29 @@
 
     </com.google.android.material.bottomappbar.BottomAppBar>
 
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        app:srcCompat="@drawable/ic_baseline_settings_24"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="110dp"/>
+
+    <Button
+        android:id="@+id/resetPassBtn"
+        android:layout_width="390dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="1dp"
+        android:layout_marginTop="229dp"
+        android:text="Change Password" />
+
+    <Button
+        android:id="@+id/deleteButton"
+        android:layout_width="390dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="1dp"
+        android:layout_marginTop="290dp"
+        android:text="Delete Account" />
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
