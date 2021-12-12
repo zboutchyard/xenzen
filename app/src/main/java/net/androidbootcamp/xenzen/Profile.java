@@ -104,6 +104,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
             user = FirebaseAuth.getInstance().getCurrentUser();
             reference = FirebaseDatabase.getInstance().getReference("users");
             userID = user.getUid();
+
+
             final TextView userNameText = findViewById(R.id.txtUsername);
             final TextView emailText = findViewById(R.id.txtEmail);
             final TextView phoneText = findViewById(R.id.txtPhone);
